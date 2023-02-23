@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="index.css" />
+
+    <title>Frontend Mentor | Tic Tac Toe</title>
+  </head>
+  <body>
+    <main>
+      <section class="xo width">
+        <img src="../starter-code/assets/icon-x.svg" alt="icon-x" />
+        <img src="../starter-code/assets/icon-o.svg" alt="icon-o" />
+      </section>
+      <!-- New game menu start -->
+      <section class="players-marks">
+        <p class="width heading-xs ">Pick player 1's mark</p>
+        <div class="width select-player">
+          <img
+            src="../starter-code/assets/icon-x.svg"
+            alt="icon-x"
+            class="x-outline"
+          />
+          <img
+            src="../starter-code/assets/icon-o.svg"
+            alt="icon-o"
+            class="o-outline"
+          />
+        </div>
+        <p class="width">Remember: X goes first</p>
+      </section>
+
+      <section class="new-game-btn">
+        <button type="submit" class="prim-button button-1 heading-s">
+          New Game (vs CPU)
+        </button>
+        <button type="submit" class="prim-button button-2 heading-s">
+          New Game (vs player)
+        </button>
+      </section>
+    </main>
+  </body>
+</html>
