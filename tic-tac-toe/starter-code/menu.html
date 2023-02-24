@@ -20,32 +20,35 @@
         <img src="../starter-code/assets/icon-x.svg" alt="icon-x" />
         <img src="../starter-code/assets/icon-o.svg" alt="icon-o" />
       </section>
-      <!-- New game menu start -->
+
       <section class="players-marks">
-        <p class="width heading-xs ">Pick player 1's mark</p>
+        <p class="width heading-xs">Pick player 1's mark</p>
         <div class="width select-player">
-          <img
-            src="../starter-code/assets/icon-x.svg"
-            alt="icon-x"
-            class="x-outline"
-          />
-          <img
-            src="../starter-code/assets/icon-o.svg"
-            alt="icon-o"
-            class="o-outline"
-          />
+          <button type="submit" class="x-outline">
+            <img src="../starter-code/assets/icon-x.svg" alt="icon-x" />
+          </button>
+
+          <button type="submit" class="o-outline">
+            <img src="../starter-code/assets/icon-o.svg" alt="icon-o" />
+          </button>
         </div>
         <p class="width">Remember: X goes first</p>
       </section>
 
       <section class="new-game-btn">
-        <button type="submit" class="prim-button button-1 heading-s">
-          New Game (vs CPU)
-        </button>
-        <button type="submit" class="prim-button button-2 heading-s">
-          New Game (vs player)
-        </button>
+        <a href="./new-game-solo.html">
+          <button type="submit" class="prim-button button-1 heading-s">
+            New Game (vs CPU)
+          </button>
+        </a>
+
+        <a href="./new-game-multiplayer.html">
+          <button type="submit" class="prim-button button-2 heading-s">
+            New Game (vs player)
+          </button>
+        </a>
       </section>
     </main>
+    <script src="index.js"></script>
   </body>
 </html>
