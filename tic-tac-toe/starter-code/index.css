@@ -196,6 +196,9 @@ svg {
   box-shadow: inset 0px -8px 0px #10212a;
   border-radius: 15px;
 }
+.play-buttons div:hover{
+  cursor: pointer;
+}
 .icon-x-o {
   width: 64px;
   height: 64px;

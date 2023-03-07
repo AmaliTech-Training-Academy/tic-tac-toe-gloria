@@ -19,11 +19,11 @@
       <section class="solo-header">
         <img src="../starter-code/assets/logo.svg" alt="logo-xo" class="logo" />
         <button type="submit" class="turn">
-          <img
+          <!-- <img
             src="../starter-code/assets/icon-x.svg"
             alt="x-icon"
             class="x-turn icon"
-          />
+          /> -->
           <span class="heading-xs body-text">turn</span>
         </button>
         <button type="reset" class="restart-button">
@@ -35,47 +35,44 @@
         </button>
       </section>
       <section class="play-buttons">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-
+        <div class="box" id="0"></div>
+        <div class="box" id="1"></div>
+        <div class="box" id="2"></div>
+        <div class="box" id="3"></div>
+        <div class="box" id="4"></div>
+        <div class="box" id="5"></div>
+        <div class="box" id="6"></div>
+        <div class="box" id="7"></div>
+        <div class="box" id="8"></div>
+        
         <button class="you" type="button">
-          <span class="span players-type"> </span><span class="player">you</span> 
-          <p class="heading-m">0</p>
+          <span class="span players-type"> </span><span class="player">(you)</span> 
+          <p class="heading-m player-score">0</p>
         </button>
         <button class="ties" type="button">
           Ties
-          <p class="heading-m">0</p>
+          <p class="heading-m tie-score">0</p>
         </button>
         <button class="cpu" type="button">
-          <span class="span cpu-type"> </span><span class="player">cpu</span> 
-          <p class="heading-m">0</p>
+          <span class="span cpu-type"> </span><span class="cpu">(cpu)</span> 
+          <p class="heading-m cpu-score">0</p>
         </button>
       </section>
-
-      <!-- x/o icon -->
-      <!-- turn X (You) -->
-      <!-- Your score -->
-      <!-- Ties -->
-      <!-- Ties score -->
-      <!-- X (CPU) -->
-      <!-- CPU score -->
-
-      <!-- Oh no, you lost You won! Player -->
-      <!-- 1/2 -->
-      <!-- wins! -->
-
-      <!-- x/o icon -->
-      <!-- takes the round Round tied Restart game? Quit Next round No, cancel Yes,
-      restart -->
-
-      <!-- Game board end -->
     </main>
+
+    <article>
+      <main class="lost-main">
+          <p class="heading-xs player-state"></p>
+          <div class="winner">
+              <img alt="player-icon" class="winner-icon">
+              <span class="heading-l ">takes the round</span>
+          </div>
+          <div class="lost-btns">
+              <button type="submit" class="heading-xs restart-button ">quit</button>
+              <button type="submit" class="heading-xs  sec-button-1">Next Round</button>
+          </div>
+      </main>
+  </article>
+    <script src="new-game.js"></script>
   </body>
 </html>
