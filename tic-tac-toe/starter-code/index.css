@@ -136,22 +136,33 @@ img {
   height: 32px;
   width: 32px;
 }
-svg {
+/* svg {
   height: 32px;
   width: 32px;
+} */
+svg path{
+  fill: #A8BFC9;
+  ;
 }
 .xo {
   margin-bottom: 40px;
 }
-.o-outline {
-  background: #a8bfc9;
+/* .o-outline {
+  background: none;
   border-radius: 10px;
   width: 198px;
   height: 54px;
   cursor: pointer;
 }
-.o-outline path {
-  fill: #1a2a33;
+.o-outline:hover {
+  background: #a8bfc90d;
+  border-radius: 10px;
+}
+.o-outline.clicked{
+  background: #A8BFC9;
+} */
+/* .o-class.path{
+  fill: #1A2A33;
 }
 .x-outline {
   cursor: pointer;
@@ -163,6 +174,35 @@ svg {
   background: #a8bfc90d;
   border-radius: 10px;
 }
+.x-outline.clicked{
+  background: #A8BFC9;
+  border-radius: 10px;
+}
+.path{
+  fill: #1A2A33;
+} */
+ .player-outline{
+  background: none;
+  border-radius: 10px;
+  width: 198px;
+  height: 54px;
+  cursor: pointer;
+}
+.player-outline:hover {
+  background: #a8bfc90d;
+  border-radius: 10px;
+}
+.player-outline.clicked{
+  background: #A8BFC9;
+  border-radius: 10px;
+}
+/*.player-outline.clicked{
+  background: #A8BFC9;
+  border-radius: 10px;
+}
+.path{
+  fill: #1A2A33;
+}  */
 .icon {
   height: 20px;
   width: 20px;
