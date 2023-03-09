@@ -11,6 +11,8 @@ body {
   letter-spacing: 0.875px;
   text-transform: uppercase;
   background: #1a2a33;
+  margin-top: 138px;
+  margin-bottom: 139px;
 }
 .body-text {
   color: #a8bfc9;
@@ -18,8 +20,6 @@ body {
 main {
   width: 460px;
   margin: auto;
-  margin-top: 20vh;
-  margin-bottom: 20vh;
 }
 .width {
   width: max-content;
@@ -133,76 +133,36 @@ button {
   padding: 9px 8px;
 }
 img {
-  height: 32px;
-  width: 32px;
+  height: 64px;
+  width: 64px;
 }
-/* svg {
-  height: 32px;
-  width: 32px;
-} */
-svg path{
-  fill: #A8BFC9;
-  ;
+svg path {
+  fill: #a8bfc9;
 }
 .xo {
   margin-bottom: 40px;
 }
-/* .o-outline {
+.player-outline {
   background: none;
   border-radius: 10px;
   width: 198px;
-  height: 54px;
-  cursor: pointer;
-}
-.o-outline:hover {
-  background: #a8bfc90d;
-  border-radius: 10px;
-}
-.o-outline.clicked{
-  background: #A8BFC9;
-} */
-/* .o-class.path{
-  fill: #1A2A33;
-}
-.x-outline {
-  cursor: pointer;
-  width: 198px;
-  height: 54px;
-  background: none;
-}
-.x-outline:hover {
-  background: #a8bfc90d;
-  border-radius: 10px;
-}
-.x-outline.clicked{
-  background: #A8BFC9;
-  border-radius: 10px;
-}
-.path{
-  fill: #1A2A33;
-} */
- .player-outline{
-  background: none;
-  border-radius: 10px;
-  width: 198px;
-  height: 54px;
+  /* height: 54px; */
   cursor: pointer;
 }
 .player-outline:hover {
   background: #a8bfc90d;
   border-radius: 10px;
 }
-.player-outline.clicked{
-  background: #A8BFC9;
+.btn-click {
+  background-color: #a8bfc9;
   border-radius: 10px;
 }
-/*.player-outline.clicked{
-  background: #A8BFC9;
-  border-radius: 10px;
+.btn-click:hover {
+  background-color: #a8bfc9;
 }
-.path{
-  fill: #1A2A33;
-}  */
+.btn-click path {
+  fill: #1a2a33;
+}
 .icon {
   height: 20px;
   width: 20px;
@@ -214,6 +174,20 @@ svg path{
   width: 140px;
   height: 52px;
   margin-left: -16px;
+  display: flex;
+  justify-content: center;
+}
+.turn .body-text{
+  align-self: center;
+  margin-left: 13px;
+}
+.players-turn{
+  height: 16px;
+  align-self: center;
+}
+.turn img{
+  width: 18px;
+  height: 16px;
 }
 .x-turn {
   margin-right: 13px;
@@ -236,7 +210,7 @@ svg path{
   box-shadow: inset 0px -8px 0px #10212a;
   border-radius: 15px;
 }
-.play-buttons div:hover{
+.play-buttons div:hover {
   cursor: pointer;
 }
 .icon-x-o {
@@ -258,60 +232,61 @@ svg path{
 .cpu {
   background: #f2b137;
 }
+.score {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: 0.875px;
+  text-align: center;
+}
+
 article {
   width: 100%;
   background: #1f3641;
+  position: absolute;
+  top: 330px;
 }
-.lost-main {
-  width: 491px;
+.announcer {
+  margin: auto;
   padding-top: 45px;
   padding-bottom: 45px;
   text-align: center;
 }
-.lost-main p {
+.announcer p {
   color: #a8bfc9;
   margin-bottom: 23px;
 }
 .winner {
+  display: flex;
+  justify-content: center;
   margin-bottom: 24px;
 }
-.winner span {
+.winner h2 {
   margin-left: 24px;
+  margin-top: 7px;
 }
-.lost-main .restart-button {
+.announcer .restart-button {
   width: 76px;
 }
-.lost-main .sec-button-1 {
+.announcer .sec-button-1 {
   height: 52px;
   width: 146px;
   border-radius: 10px;
   margin-left: 16px;
 }
+.tie-announce{
+  padding-top: 67px;
+  padding-bottom: 67px;
+}
+.tied{
+  color: #A8BFC9;
+  margin-bottom: 31px;
+}
+
+
 
 @media (max-width: 480px) {
   main {
     width: 85%;
-  }
-  .o-outline {
-    padding: 11px 63px;
-  }
-  .x-outline {
-    padding: 15px 30px;
-  }
-}
-@media (max-width: 560px) {
-  .o-outline {
-    padding: 11px 43px;
-  }
-  .x-outline {
-    padding: 15px 30px;
-  }
-}
-@media (max-width: 320px) {
-  .o-outline {
-    padding: 11px 33px;
-  }
-  .x-outline {
-    padding: 15px 25px;
   }
 }

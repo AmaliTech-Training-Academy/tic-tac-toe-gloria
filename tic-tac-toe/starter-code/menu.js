@@ -1,30 +1,25 @@
 const playerX = document.querySelector(".x-outline");
 const playerO = document.querySelector(".o-outline");
 
-const Players = document.querySelectorAll('player-outline');
-const playerPath = document.querySelectorAll("player-class")
-
 const newSoloGame = document.getElementById("new-solo-btn");
 const newMultiGame = document.getElementById("new-multiplayer-btn");
 
-Players.forEach(player=>{
-  player.addEventListener('click', ()=>{
-    Players.forEach(player => {
-      player.classList.remove('clicked')
-    });
-    player.classList.add('clicked');
+const playerXSelected = ()=>{
+  playerX.addEventListener('click', ()=>{
+    playerX.classList.toggle('btn-click');
+    sessionStorage.setItem("xState", "x");
+  });
+}
+
+const playerOSeclected = ()=>{
+  playerO.addEventListener('click', ()=>{
+    playerO.classList.toggle('btn-click');
+    sessionStorage.setItem("oState", "o");
   })
-})
+}
 
-playerX.addEventListener("click", () => {
-  // Set the user state to "selected"
-  sessionStorage.setItem("xState", "x");
-});
-
-playerO.addEventListener("click", () => {
-  // playerO.classList.add("clicked")
-  sessionStorage.setItem("oState", "o");
-});
+playerXSelected()
+playerOSeclected()
 
 
 

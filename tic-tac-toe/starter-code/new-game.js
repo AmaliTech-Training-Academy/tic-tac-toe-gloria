@@ -11,6 +11,13 @@ const oPlayer = '<img src="../starter-code/assets/icon-o.svg">';
 const xOutline = '<img src="../starter-code/assets/icon-x-outline.svg">';
 const oOutline = '<img src="../starter-code/assets/icon-o-outline.svg">';
 
+const playersTurn = document.querySelector(".players-turn");
+playersTurn.innerHTML = xPlayer
+
+const startGame = ()=>{
+    
+}
+
 const oText = 'O';
 const xText = 'X';
 
