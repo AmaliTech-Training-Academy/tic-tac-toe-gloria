@@ -19,17 +19,10 @@
       <section class="solo-header">
         <img src="../starter-code/assets/logo.svg" alt="logo-xo" class="logo" />
         <button type="submit" class="turn">
-          <!-- <img
-            src="../starter-code/assets/icon-x.svg"
-            alt="x-icon"
-            class="x-turn icon"
-          /> -->
-          <!-- <span class="heading-xs body-text">turn</span> -->
-          <div class="players-turn">
-          </div>
+          <div class="players-turn"></div>
           <div class="heading-xs body-text">turn</div>
         </button>
-        <button type="reset" class="restart-button">
+        <button type="reset" class="restart-button" onclick="location.reload()">
           <img
             src="../starter-code/assets/icon-restart.svg"
             alt="restart-icon"
@@ -38,69 +31,82 @@
         </button>
       </section>
       <section class="play-buttons">
-        <div class="box" id="0"></div>
-        <div class="box" id="1"></div>
-        <div class="box" id="2"></div>
-        <div class="box" id="3"></div>
-        <div class="box" id="4"></div>
-        <div class="box" id="5"></div>
-        <div class="box" id="6"></div>
-        <div class="box" id="7"></div>
-        <div class="box" id="8"></div>
+        <div class="box" id="0" onclick="placeMark(0)"></div>
+        <div class="box" id="1" onclick="placeMark(1)"></div>
+        <div class="box" id="2" onclick="placeMark(2)"></div>
+        <div class="box" id="3" onclick="placeMark(3)"></div>
+        <div class="box" id="4" onclick="placeMark(4)"></div>
+        <div class="box" id="5" onclick="placeMark(5)"></div>
+        <div class="box" id="6" onclick="placeMark(6)"></div>
+        <div class="box" id="7" onclick="placeMark(7)"></div>
+        <div class="box" id="8" onclick="placeMark(8)"></div>
 
-        <button class="you" type="button">
-          <span class="span players-type"> </span
-          ><span class="score">(you)</span>
+        <button class="you score" type="button">
+          <span class="span players-type"></span><span> (you)</span>
           <p class="heading-m player-score">0</p>
         </button>
         <button class="ties score" type="button">
           Ties
           <p class="heading-m tie-score">0</p>
         </button>
-        <button class="cpu" type="button">
-          <span class="span cpu-type"> </span><span class="score">(cpu)</span>
+        <button class="cpu score" type="button">
+          <span class="span cpu-type"> </span><span> (cpu)</span>
           <p class="heading-m cpu-score">0</p>
         </button>
       </section>
     </main>
 
-    <!-- <article class="o-announcer">
+    <article class="o-announcer">
       <section class="announcer">
-          <p class="heading-xs player-state">OH NO, YOU LOST…</p>
-          <div class="winner">
-              <img alt="player-icon" class="winner-icon" src="./assets/icon-o.svg">
-              <h2 class="heading-l ">takes the round</h2>
-          </div>
-          <div class="lost-btns">
-              <button type="submit" class="heading-xs restart-button ">quit</button>
-              <button type="submit" class="heading-xs  sec-button-1">Next Round</button>
-          </div>
-      </section>
-  </article> -->
-
-    <!-- <article class="x-announcer" >
-    <section class="announcer">
-        <p class="heading-xs player-state">depends on user</p>
+        <p class="heading-xs player-state">OH NO, YOU LOST…</p>
         <div class="winner">
-            <img alt="player-icon" class="winner-icon" src="./assets/icon-x.svg">
-            <h2 class="heading-l ">takes the round</h2>
+          <img
+            alt="player-icon"
+            class="winner-icon"
+            src="./assets/icon-o.svg"
+          />
+          <h2 class="heading-l">takes the round</h2>
         </div>
         <div class="lost-btns">
-            <button type="submit" class="heading-xs restart-button ">quit</button>
-            <button type="submit" class="heading-xs  sec-button-1">Next Round</button>
+          <button type="submit" class="heading-xs restart-button">quit</button>
+          <button type="submit" class="heading-xs sec-button-1">
+            Next Round
+          </button>
         </div>
-    </section>
-</article> -->
+      </section>
+    </article>
 
-    <!-- <article class="tie-announcer" >
-  <section class="announcer tie-announce">
-      <h2 class="heading-l tied">round tied</h2>
-      <div class="lost-btns">
-          <button type="submit" class="heading-xs restart-button ">quit</button>
-          <button type="submit" class="heading-xs  sec-button-1">Next Round</button>
-      </div>
-  </section>
-</article> -->
+    <!--<article class="x-announcer ">
+      <section class="announcer">
+        <p class="heading-xs player-state">depends on user</p>
+        <div class="winner">
+          <img
+            alt="player-icon"
+            class="winner-icon"
+            src="./assets/icon-x.svg"
+          />
+          <h2 class="heading-l">takes the round</h2>
+        </div>
+        <div class="lost-btns">
+          <button type="submit" class="heading-xs restart-button">quit</button>
+          <button type="submit" class="heading-xs sec-button-1">
+            Next Round
+          </button>
+        </div>
+      </section>
+    </article> -->
+
+    <!-- <article class="tie-announcer">
+      <section class="announcer tie-announce">
+        <h2 class="heading-l tied">round tied</h2>
+        <div class="lost-btns">
+          <button type="submit" class="heading-xs restart-button">quit</button>
+          <button type="submit" class="heading-xs sec-button-1">
+            Next Round
+          </button>
+        </div>
+      </section>
+    </article> -->
     <script src="new-game.js"></script>
   </body>
 </html>

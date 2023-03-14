@@ -18,15 +18,11 @@
     <main>
       <section class="solo-header">
         <img src="../starter-code/assets/logo.svg" alt="logo-xo" class="logo" />
-        <button type="submit" class="turn">
-          <img
-            src="../starter-code/assets/icon-x.svg"
-            alt="x-icon"
-            class="x-turn icon"
-          />
-          <span class="heading-xs body-text">turn</span>
+        <button class="turn">
+          <div class="players-turn"></div>
+          <div class="heading-xs body-text">turn</div>
         </button>
-        <button type="reset" class="restart-button">
+        <button type="reset" class="restart-button" onclick="location.reload()">
           <img
             src="../starter-code/assets/icon-restart.svg"
             alt="restart-icon"
@@ -35,30 +31,63 @@
         </button>
       </section>
       <section class="play-buttons">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+        <div class="box" id="0"></div>
+        <div class="box" id="1"></div>
+        <div class="box" id="2"></div>
+        <div class="box" id="3"></div>
+        <div class="box" id="4"></div>
+        <div class="box" id="5"></div>
+        <div class="box" id="6"></div>
+        <div class="box" id="7"></div>
+        <div class="box" id="8"></div>
 
-        <button class="you" type="button">
-          <span class="spanlayers-type"> </span><span class="player">(p2)</span> 
+        <button class="you score" type="button">
+          <span class="span player2-mark"></span
+          ><span class="player"> (p2)</span>
           <p class="heading-m">0</p>
         </button>
-        <button class="ties" type="button">
+        <button class="ties score" type="button">
           Ties
           <p class="heading-m">0</p>
         </button>
-        <button class="cpu" type="button">
-          <span class="players-type">O</span><span class="player"> (p1)</span>
+        <button class="cpu score" type="button">
+          <span class="player1-mark"></span><span class="player"> (p1)</span>
           <p class="heading-m">0</p>
         </button>
       </section>
     </main>
-    <script src="index.js"></script>
+
+    <!--<article class="player-1-won">
+      <section class="announcer">
+        <p class="heading-xs player-state">Player 1 won...</p>
+        <div class="winner">
+          <span class="winner-icon"></span>
+          <h2 class="heading-l">takes the round</h2>
+        </div>
+        <div class="lost-btns">
+          <button type="submit" class="heading-xs restart-button">quit</button>
+          <button type="submit" class="heading-xs sec-button-1">
+            Next Round
+          </button>
+        </div>
+      </section>
+    </article>-->
+
+    <!--<article class="player-2-won">
+      <section class="announcer">
+        <p class="heading-xs player-state">Player 2 won...</p>
+        <div class="winner">
+          <span class="winner-icon"></span>
+          <h2 class="heading-l">takes the round</h2>
+        </div>
+        <div class="lost-btns">
+          <button type="submit" class="heading-xs restart-button">quit</button>
+          <button type="submit" class="heading-xs sec-button-1">
+            Next Round
+          </button>
+        </div>
+      </section>
+    </article>-->
+    <script src="multigame.js"></script>
   </body>
 </html>
