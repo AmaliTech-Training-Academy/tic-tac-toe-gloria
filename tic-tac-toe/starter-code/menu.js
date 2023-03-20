@@ -8,19 +8,24 @@ playerX.addEventListener("click", () => {
   playerO.classList.remove("btn-click");
   playerX.classList.toggle("btn-click");
   sessionStorage.setItem("selectedMark", "x");
+  sessionStorage.setItem("cpuMark", "o");
 });
 
 playerO.addEventListener("click", () => {
   playerX.classList.remove("btn-click");
   playerO.classList.toggle("btn-click");
   sessionStorage.setItem("selectedMark", "o");
+  sessionStorage.setItem("cpuMark", "x");
 });
+
+
 
 newSoloGame.addEventListener("click", () => {
   const selectedMark = sessionStorage.getItem("selectedMark");
 
   // Check if the user state is "selected"
   if (selectedMark) {
+    sessionStorage.setItem("nextPlayer", "x");
     // Navigate to a new page
     window.location.href = "./new-game-solo.html";
   } else {
@@ -35,4 +40,9 @@ newMultiGame.addEventListener("click", () => {
   } else {
     alert("select a mark");
   }
+});
+
+const logo = document.querySelector(".logo");
+logo.addEventListener("click", () => {
+  window.location.href = "./new-game-multiplayer.html";
 });

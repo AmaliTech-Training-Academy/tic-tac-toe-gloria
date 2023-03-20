@@ -30,10 +30,10 @@
           />
         </button>
       </section>
-      <section class="play-buttons">
+      <section class="board ">
         <div class="box" id="0"></div>
         <div class="box" id="1"></div>
-        <div class="box" id="2"></div>
+        <div class="box " id="2"></div>
         <div class="box" id="3"></div>
         <div class="box" id="4"></div>
         <div class="box" id="5"></div>
@@ -57,29 +57,50 @@
       </section>
     </main>
 
-    <!--<article class="player-1-won">
+    <article class="o-announcer">
       <section class="announcer">
-        <p class="heading-xs player-state">Player 1 won...</p>
+        <p class="heading-xs player-state">PLAYER 1 WINS!</p>
         <div class="winner">
-          <span class="winner-icon"></span>
+          <img
+            alt="player-icon"
+            class="winner-icon"
+            src="./assets/icon-o.svg"
+          />
           <h2 class="heading-l">takes the round</h2>
         </div>
         <div class="lost-btns">
-          <button type="submit" class="heading-xs restart-button">quit</button>
+          <button type="submit" class="heading-xs restart-button quit">
+            quit
+          </button>
           <button type="submit" class="heading-xs sec-button-1">
             Next Round
           </button>
         </div>
       </section>
-    </article>-->
+    </article>
 
-    <!--<article class="player-2-won">
+    <article class="x-announcer">
       <section class="announcer">
-        <p class="heading-xs player-state">Player 2 won...</p>
+        <p class="heading-xs player-state">PLAYER 2 WINS!</p>
         <div class="winner">
-          <span class="winner-icon"></span>
-          <h2 class="heading-l">takes the round</h2>
+          <img
+            alt="player-icon"
+            class="winner-icon"
+            src="./assets/icon-x.svg"
+          />
+          <h1 class="heading-l">takes the round</h2>
         </div>
+        <div class="lost-btns">
+          <button type="submit" class="heading-xs restart-button quit">quit</button>
+          <button type="submit" class="heading-xs sec-button-1">
+            Next Round
+          </button>
+        </div>
+      </section>
+    </article>
+    <article class="tie-announcer">
+      <section class="announcer tie-announce">
+        <h2 class="heading-l tied">round tied</h2>
         <div class="lost-btns">
           <button type="submit" class="heading-xs restart-button">quit</button>
           <button type="submit" class="heading-xs sec-button-1">
@@ -87,7 +108,22 @@
           </button>
         </div>
       </section>
-    </article>-->
+    </article>
+
+    <article class="restart-modale">
+      <section class="announcer announce-restart">
+        <h2 class="heading-l restart-game">RESTART GAME?</h2>
+
+        <div class="restart-btns">
+          <button type="submit" class="restart-button cancel-restart">
+            NO, CANCEL
+          </button>
+          <button type="submit" class="sec-button-1 confirm-restart">
+            YES, RESTART
+          </button>
+        </div>
+      </section>
+    </article>
     <script src="multigame.js"></script>
   </body>
 </html>

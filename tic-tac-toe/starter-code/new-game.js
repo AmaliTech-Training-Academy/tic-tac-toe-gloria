@@ -17,33 +17,43 @@ const oOutline = '<img src="../starter-code/assets/icon-o-outline.svg">';
 const playersTurn = document.querySelector(".players-turn");
 
 const userMark = sessionStorage.getItem("selectedMark");
-const cpuMark = userMark === "x" ? oPlayer : xPlayer;
+const cpuMark = sessionStorage.getItem("cpuMark");
+// const cpuMark = userMark === "x" ? oPlayer : xPlayer;
 
 you.innerHTML = userMark;
 cpu.innerHTML = userMark === "x" ? "O" : "X";
 
+let playTimes = 1;
+
 let isXTurn = true;
 const isUserX = userMark === "x";
-playersTurn.innerHTML = isXTurn ? xPlayer : oPlayer;
+// do {
+//   playersTurn.innerHTML = isXTurn ? xPlayer : oPlayer;
+// } while ((isXTurn = !isXTurn));
 
 window.onload = (event) => {
-  console.log("page is fully loaded");
-  if (!isUserX) {
+  console.log(userMark);
+  if (userMark !== "x") {
     cpuPlay();
   }
+  // isXTurn = false;
 };
 
 const getNextPlayer = () => {
-  if (isXTurn && isUserX) return;
-  cpuPlay();
-  console.log(`hello, ${isXTurn}`);
+  return playTimes % 2 === 0;
 };
 
 const placeMark = (id) => {
+  // getNextPlayer();
   const clickedBox = boxes[id];
   clickedBox.innerHTML = playersTurn.innerHTML === xPlayer ? xPlayer : oPlayer;
-  isXTurn = !isXTurn;
-  getNextPlayer();
+  // const nextPlayer = getNextPlayer();
+  // console.log("hello", nextPlayer);
+  // if (nextPlayer === cpuMark) {
+  //   cpuPlay();
+  // }
+  // isXTurn = !isXTurn;
+  // getNextPlayer();
 };
 
 const cpuPlay = () => {
@@ -55,22 +65,13 @@ const cpuPlay = () => {
   } else {
     cpuPlay();
   }
-
-  // if (cpuSelectBox === "") {
-  //   cpuSelectBox.innerHTML = userMark;
-  // }
 };
 
 const isAvailablePosition = (id) => {
   return boxes[id].innerHTML === "";
 };
 
-const startGame = () => {
-  // playerO.addEventListener('click', ()=>{
-  //     playerO.classList.toggle('btn-click');
-  //     sessionStorage.setItem("selectedMark", "o");
-  //   })
-};
+const startGame = () => {};
 
 const oAnnouncer = document.querySelector(".o-announcer");
 oAnnouncer.classList.add("remove-announcer");

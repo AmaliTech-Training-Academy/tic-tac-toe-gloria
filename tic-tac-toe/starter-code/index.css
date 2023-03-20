@@ -54,6 +54,7 @@ main {
   width: 71.97px;
   height: 32px;
   align-self: center;
+  cursor: pointer;
 }
 button {
   cursor: pointer;
@@ -139,13 +140,13 @@ img {
 svg path {
   fill: #a8bfc9;
 }
-.play-Mark {
+/* .play-Mark {
   align-self: center;
 }
 .play-Mark:hover {
   content: url(../starter-code/assets/icon-x-outline.svg);
   align-self: center;
-}
+} */
 .xo {
   margin-bottom: 40px;
 }
@@ -160,6 +161,7 @@ svg path {
   background: #a8bfc90d;
   border-radius: 10px;
 }
+
 .btn-click {
   background-color: #a8bfc9;
   border-radius: 10px;
@@ -204,13 +206,13 @@ svg path {
   display: flex;
   justify-content: space-between;
 }
-.play-buttons {
+.board {
   margin-top: 19px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
-.play-buttons div {
+.board div {
   display: flex;
   justify-content: center;
   width: 140px;
@@ -219,10 +221,10 @@ svg path {
   box-shadow: inset 0px -8px 0px #10212a;
   border-radius: 15px;
 }
-.play-buttons img {
+.board img {
   align-self: center;
 }
-.play-buttons div:hover {
+.board div:hover {
   cursor: pointer;
 }
 .icon-x-o {
@@ -231,7 +233,7 @@ svg path {
   margin-left: 25%;
   margin-top: 25%;
 }
-.play-buttons button {
+.board button {
   border-radius: 15px;
   height: 72px;
 }
@@ -253,18 +255,34 @@ svg path {
 }
 
 article {
-  width: 100%;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000000;
+  justify-content: center;
+  align-items: center;
+}
+
+.announcer {
   background: #1f3641;
   position: absolute;
-  top: 330px;
-}
-.announcer {
-  margin: auto;
+  top: 30%;
+  width: 100%;
   padding-top: 45px;
   padding-bottom: 45px;
   text-align: center;
 }
 .announcer p {
+  font-family: Outfit;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 1px;
+  text-align: center;
+
   color: #a8bfc9;
   margin-bottom: 23px;
 }
@@ -273,11 +291,18 @@ article {
   justify-content: center;
   margin-bottom: 24px;
 }
+
 .winner h2 {
   margin-left: 24px;
   margin-top: 7px;
+  color: #f2b137;
 }
-.announcer .restart-button {
+.winner h1 {
+  margin-left: 24px;
+  margin-top: 7px;
+  color: #31c3bd;
+}
+.announcer .quit {
   width: 76px;
 }
 .announcer .sec-button-1 {
@@ -285,6 +310,10 @@ article {
   width: 146px;
   border-radius: 10px;
   margin-left: 16px;
+}
+.announce-restart {
+  padding-top: 67px;
+  padding-bottom: 67px;
 }
 .tie-announce {
   padding-top: 67px;
@@ -294,8 +323,82 @@ article {
   color: #a8bfc9;
   margin-bottom: 31px;
 }
-.remove-announcer {
-  display: none;
+.restart-game {
+  font-family: Outfit;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 50px;
+  letter-spacing: 2.5px;
+  text-align: center;
+  color: #a8bfc9;
+}
+.restart-btns {
+  margin-top: 31px;
+}
+.restart-btns button {
+  font-family: Outfit;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 1px;
+  text-align: center;
+  color: #1a2a33;
+}
+.cancel-restart {
+  width: 139px;
+}
+
+.board.xMark .box:not(.xMark):not(.oMark):hover {
+  background-image: url("./assets/icon-x-outline.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.board.oMark .box:not(.xMark):not(.oMark):hover {
+  background-image: url("./assets/icon-o-outline.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.box.xMark {
+  background-image: url(./assets/icon-x.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.box.oMark {
+  background-image: url("./assets/icon-o.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.box.xMark,
+.box.oMark {
+  cursor: not-allowed;
+}
+
+/* .box:hover{} */
+
+@media (max-width: 560px) {
+  .winner h2 {
+    margin-left: 8px;
+    margin-top: -1px;
+    color: #f2b137;
+    font-family: Outfit;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 30px;
+    letter-spacing: 1.5px;
+  }
+  .winner h1 {
+    margin-left: 8px;
+    margin-top: -1px;
+    font-family: Outfit;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 30px;
+    letter-spacing: 1.5px;
+  }
+  .winner img {
+    width: 30px;
+    height: 30px;
+  }
 }
 
 @media (max-width: 481px) {

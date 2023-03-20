@@ -55,7 +55,6 @@
         </button>
       </section>
     </main>
-
     <article class="o-announcer">
       <section class="announcer">
         <p class="heading-xs player-state">OH NO, YOU LOST…</p>
@@ -68,7 +67,9 @@
           <h2 class="heading-l">takes the round</h2>
         </div>
         <div class="lost-btns">
-          <button type="submit" class="heading-xs restart-button">quit</button>
+          <button type="submit" class="heading-xs restart-button quit">
+            quit
+          </button>
           <button type="submit" class="heading-xs sec-button-1">
             Next Round
           </button>
@@ -76,27 +77,27 @@
       </section>
     </article>
 
-    <!--<article class="x-announcer ">
+    <article class="x-announcer">
       <section class="announcer">
-        <p class="heading-xs player-state">depends on user</p>
+        <p class="heading-xs player-state">YOU WON!</p>
         <div class="winner">
           <img
             alt="player-icon"
             class="winner-icon"
             src="./assets/icon-x.svg"
           />
-          <h2 class="heading-l">takes the round</h2>
+          <h1 class="heading-l">takes the round</h2>
         </div>
         <div class="lost-btns">
-          <button type="submit" class="heading-xs restart-button">quit</button>
+          <button type="submit" class="heading-xs restart-button quit">quit</button>
           <button type="submit" class="heading-xs sec-button-1">
             Next Round
           </button>
         </div>
       </section>
-    </article> -->
+    </article>
 
-    <!-- <article class="tie-announcer">
+    <article class="tie-announcer">
       <section class="announcer tie-announce">
         <h2 class="heading-l tied">round tied</h2>
         <div class="lost-btns">
@@ -106,7 +107,23 @@
           </button>
         </div>
       </section>
-    </article> -->
-    <script src="new-game.js"></script>
+    </article>
+
+    <article class="restart-modale">
+      <section class="announcer announce-restart">
+        <h2 class="heading-l restart-game">RESTART GAME?</h2>
+
+        <div class="restart-btns">
+          <button type="submit" class="restart-button cancel-restart">
+            NO, CANCEL
+          </button>
+          <button type="submit" class="sec-button-1 confirm-restart">
+            YES, RESTART
+          </button>
+        </div>
+      </section>
+    </article>
+    
+    <script src="solo.js"></script>
   </body>
 </html>
