@@ -22,7 +22,7 @@
           <div class="players-turn"></div>
           <div class="heading-xs body-text">turn</div>
         </button>
-        <button type="reset" class="restart-button" onclick="location.reload()">
+        <button type="reset" class="restart-button">
           <img
             src="../starter-code/assets/icon-restart.svg"
             alt="restart-icon"
@@ -30,16 +30,16 @@
           />
         </button>
       </section>
-      <section class="board ">
-        <div class="box" id="0"></div>
-        <div class="box" id="1"></div>
-        <div class="box " id="2"></div>
-        <div class="box" id="3"></div>
-        <div class="box" id="4"></div>
-        <div class="box" id="5"></div>
-        <div class="box" id="6"></div>
-        <div class="box" id="7"></div>
-        <div class="box" id="8"></div>
+      <section class="board">
+        <div class="box" id="0" data-cell></div>
+        <div class="box" id="1" data-cell></div>
+        <div class="box" id="2" data-cell></div>
+        <div class="box" id="3" data-cell></div>
+        <div class="box" id="4" data-cell></div>
+        <div class="box" id="5" data-cell></div>
+        <div class="box" id="6" data-cell></div>
+        <div class="box" id="7" data-cell></div>
+        <div class="box" id="8" data-cell></div>
 
         <button class="you score" type="button">
           <span class="span player2-mark"></span
@@ -57,7 +57,7 @@
       </section>
     </main>
 
-    <article class="o-announcer">
+    <!--<article class="o-announcer">
       <section class="announcer">
         <p class="heading-xs player-state">PLAYER 1 WINS!</p>
         <div class="winner">
@@ -108,7 +108,7 @@
           </button>
         </div>
       </section>
-    </article>
+    </article>-->
 
     <article class="restart-modale">
       <section class="announcer announce-restart">

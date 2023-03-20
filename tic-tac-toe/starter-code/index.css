@@ -255,7 +255,7 @@ svg path {
 }
 
 article {
-  display: none;
+  /* display: none; */
   position: fixed;
   top: 0;
   left: 0;
@@ -371,6 +371,13 @@ article {
 .box.xMark,
 .box.oMark {
   cursor: not-allowed;
+}
+.restart-modale {
+  display: none;
+}
+
+.restart-modale.show {
+  display: block !important;
 }
 
 /* .box:hover{} */
