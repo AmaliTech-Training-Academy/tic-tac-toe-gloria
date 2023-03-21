@@ -14,8 +14,8 @@
 
     <title>Frontend Mentor | Tic Tac Toe</title>
   </head>
-  <body>
-    <main>
+  <body class="body">
+    <main class="main">
       <section class="solo-header">
         <img src="../starter-code/assets/logo.svg" alt="logo-xo" class="logo" />
         <button class="turn">
@@ -57,10 +57,10 @@
       </section>
     </main>
 
-    <!--<article class="o-announcer">
+    <article class="p1-o-announcer">
       <section class="announcer">
         <p class="heading-xs player-state">PLAYER 1 WINS!</p>
-        <div class="winner">
+        <div class="winner player-1o-won">
           <img
             alt="player-icon"
             class="winner-icon"
@@ -79,10 +79,10 @@
       </section>
     </article>
 
-    <article class="x-announcer">
+    <article class="p1-x-announcer">
       <section class="announcer">
-        <p class="heading-xs player-state">PLAYER 2 WINS!</p>
-        <div class="winner">
+        <p class="heading-xs player-state">PLAYER 1 WINS!</p>
+        <div class="winner player-2x-won" >
           <img
             alt="player-icon"
             class="winner-icon"
@@ -98,6 +98,48 @@
         </div>
       </section>
     </article>
+
+    <article class="p2-x-announcer">
+      <section class="announcer">
+        <p class="heading-xs player-state">PLAYER 2 WINS!</p>
+        <div class="winner player-2x-won" >
+          <img
+            alt="player-icon"
+            class="winner-icon"
+            src="./assets/icon-x.svg"
+          />
+          <h1 class="heading-l">takes the round</h2>
+        </div>
+        <div class="lost-btns">
+          <button type="submit" class="heading-xs restart-button quit">quit</button>
+          <button type="submit" class="heading-xs sec-button-1">
+            Next Round
+          </button>
+        </div>
+      </section>
+    </article>
+    <article class="p2-o-announcer">
+      <section class="announcer">
+        <p class="heading-xs player-state">PLAYER 2 WINS!</p>
+        <div class="winner player-1o-won">
+          <img
+            alt="player-icon"
+            class="winner-icon"
+            src="./assets/icon-o.svg"
+          />
+          <h2 class="heading-l">takes the round</h2>
+        </div>
+        <div class="lost-btns">
+          <button type="submit" class="heading-xs restart-button quit">
+            quit
+          </button>
+          <button type="submit" class="heading-xs sec-button-1">
+            Next Round
+          </button>
+        </div>
+      </section>
+    </article>
+
     <article class="tie-announcer">
       <section class="announcer tie-announce">
         <h2 class="heading-l tied">round tied</h2>
@@ -108,7 +150,7 @@
           </button>
         </div>
       </section>
-    </article>-->
+    </article>
 
     <article class="restart-modale">
       <section class="announcer announce-restart">

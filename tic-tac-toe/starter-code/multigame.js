@@ -9,42 +9,22 @@ const oClass = "oMark";
 const player1Mark = sessionStorage.getItem("selectedMark");
 const player2Mark = player1Mark === "x" ? "o" : "x";
 const boxes = document.querySelectorAll("[data-cell]");
+const modals = document.getElementsByTagName("article");
+const main = document.querySelector("main");
+const body = document.querySelector(".body");
+//winning modals
+const player1OModal = document.querySelector(".p1-o-announcer");
+const player1XModal = document.querySelector(".p1-x-announcer");
 
-const handleClick = (e) => {
-  const box = e.target;
-  const currentPlayer = playersTurn.innerHTML === xPlayer ? xClass : oClass;
-  console.log("clicked");
-  placeMark(box, currentPlayer);
-  switchPlayers();
-  setBoxesHoverState();
-};
+const player2OModal = document.querySelector(".p2-o-announcer");
+const player2XModal = document.querySelector(".p2-x-announcer");
 
-const setBoxesHoverState = () => {
-  board.classList.remove(xClass);
-  board.classList.remove(oClass);
+const tieModal = document.querySelector(".tie-announcer");
 
-  if (playersTurn.innerHTML === xPlayer) {
-    board.classList.add(xClass);
-  } else {
-    board.classList.add(oClass);
-  }
-};
-
-const startGame = () => {
-  boxes.forEach((box) => {
-    box.addEventListener("click", handleClick, { once: true });
-  });
-  setBoxesHoverState();
-};
-startGame();
-
-const placeMark = (box, currentPlayer) => {
-  box.classList.add(currentPlayer);
-};
-
-const switchPlayers = () => {
-  playersTurn.innerHTML = playersTurn.innerHTML === xPlayer ? oPlayer : xPlayer;
-};
+const restartModal = document.querySelector(".restart-modale");
+const restartBtn = document.querySelector(".restart-button");
+const cancelRestart = document.querySelector(".cancel-restart");
+const restart = document.querySelector(".confirm-restart");
 
 const winningCombos = [
   [0, 1, 2],
@@ -58,11 +38,80 @@ const winningCombos = [
   [6, 7, 8],
 ];
 
-const restartBtn = document.querySelector(".restart-button");
-const restartModal = document.querySelector(".restart-modale");
+const endGame = (draw) => {
+  if (draw) {
+    main.classList.add("modal-background");
+    tieModal.classList.add("show-tie");
+  }
+  //fix the logic here
+  main.classList.add("modal-background");
+  player1XModal.classList.add("show-p1-xmodal");
+};
+
+const isDraw = () => {
+  return [...boxes].every((box) => {
+    return box.classList.contains(xClass) || box.classList.contains(oClass);
+  });
+};
+
+const handleClick = (e) => {
+  const box = e.target;
+  const currentPlayer = playersTurn.innerHTML === xPlayer ? xClass : oClass;
+  placeMark(box, currentPlayer);
+  if (checkWin(currentPlayer)) {
+    endGame(false);
+  } else if (isDraw()) {
+    endGame(true);
+  } else {
+    switchPlayers();
+    setBoxesHoverState();
+  }
+};
+
+const setBoxesHoverState = () => {
+  board.classList.remove(xClass);
+  board.classList.remove(oClass);
+
+  if (playersTurn.innerHTML === xPlayer) {
+    board.classList.add(xClass);
+  } else {
+    board.classList.add(oClass);
+  }
+};
 
 const restartGame = () => {
-  console.log("hi");
-  restartModal.classList.add(show);
+  main.classList.add("modal-background");
+  restartModal.classList.add("show-restart-modal");
+  cancelRestart.addEventListener("click", () => {
+    restartModal.classList.remove("show-restart-modal");
+  });
+  restart.addEventListener("click", startGame);
 };
+
+const startGame = () => {
+  boxes.forEach((box) => {
+    box.classList.remove(xClass);
+    box.classList.remove(oClass);
+    box.removeEventListener("click", handleClick);
+    box.addEventListener("click", handleClick, { once: true });
+  });
+  setBoxesHoverState();
+  restartModal.classList.remove("show-restart-modal");
+};
+startGame();
 restartBtn.addEventListener("click", restartGame);
+const placeMark = (box, currentPlayer) => {
+  box.classList.add(currentPlayer);
+};
+
+const switchPlayers = () => {
+  playersTurn.innerHTML = playersTurn.innerHTML === xPlayer ? oPlayer : xPlayer;
+};
+
+const checkWin = (currentPlayer) => {
+  return winningCombos.some((combination) => {
+    return combination.every((id) => {
+      return boxes[id].classList.contains(currentPlayer);
+    });
+  });
+};

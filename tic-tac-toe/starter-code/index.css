@@ -140,13 +140,6 @@ img {
 svg path {
   fill: #a8bfc9;
 }
-/* .play-Mark {
-  align-self: center;
-}
-.play-Mark:hover {
-  content: url(../starter-code/assets/icon-x-outline.svg);
-  align-self: center;
-} */
 .xo {
   margin-bottom: 40px;
 }
@@ -255,13 +248,15 @@ svg path {
 }
 
 article {
-  /* display: none; */
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #000000;
+  /* background-color: #000000; */
+  background: #000000;
+  /* mix-blend-mode: normal;
+  opacity: 0.7; */
   justify-content: center;
   align-items: center;
 }
@@ -375,9 +370,41 @@ article {
 .restart-modale {
   display: none;
 }
-
+.p1-o-announcer {
+  display: none;
+}
+.p1-x-announcer {
+  display: none;
+}
+.p2-x-announcer {
+  display: none;
+}
+.p2-o-announcer {
+  display: none;
+}
+.tie-announcer {
+  display: none;
+}
 .restart-modale.show {
   display: block !important;
+}
+.tie-announcer.show-tie {
+  display: block;
+}
+.p1-x-announcer.show-p1-xmodal {
+  display: block;
+}
+.restart-modale.show-restart-modal {
+  display: block;
+}
+.main.modal-background {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
 }
 
 /* .box:hover{} */
@@ -402,7 +429,7 @@ article {
     line-height: 30px;
     letter-spacing: 1.5px;
   }
-  .winner img {
+  .winner div img {
     width: 30px;
     height: 30px;
   }
