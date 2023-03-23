@@ -31,15 +31,15 @@
         </button>
       </section>
       <section class="board">
-        <div class="box" id="0" onclick="placeMark(0)"></div>
-        <div class="box" id="1" onclick="placeMark(1)"></div>
-        <div class="box" id="2" onclick="placeMark(2)"></div>
-        <div class="box" id="3" onclick="placeMark(3)"></div>
-        <div class="box" id="4" onclick="placeMark(4)"></div>
-        <div class="box" id="5" onclick="placeMark(5)"></div>
-        <div class="box" id="6" onclick="placeMark(6)"></div>
-        <div class="box" id="7" onclick="placeMark(7)"></div>
-        <div class="box" id="8" onclick="placeMark(8)"></div>
+        <div class="box" id="0" onclick='handleClick(0)'></div>
+        <div class="box" id="1" onclick='handleClick(1)'></div>
+        <div class="box" id="2" onclick='handleClick(2)'></div>
+        <div class="box" id="3" onclick='handleClick(3)'></div>
+        <div class="box" id="4" onclick='handleClick(4)'></div>
+        <div class="box" id="5" onclick='handleClick(5)'></div>
+        <div class="box" id="6" onclick='handleClick(6)'></div>
+        <div class="box" id="7" onclick='handleClick(7)'></div>
+        <div class="box" id="8" onclick='handleClick(8)'></div>
 
         <button class="you score" type="button">
           <span class="span players-type"></span><span> (you)</span>
@@ -55,7 +55,7 @@
         </button>
       </section>
     </main>
-    <article class="o-announcer">
+    <article class="o-announcer cpu-o-won">
       <section class="announcer">
         <p class="heading-xs player-state">OH NO, YOU LOST…</p>
         <div class="winner">
@@ -77,7 +77,49 @@
       </section>
     </article>
 
-    <article class="x-announcer">
+    <article class="x-announcer player-o-won">
+      <section class="announcer">
+        <p class="heading-xs player-state">YOU WON!</p>
+        <div class="winner">
+          <img
+            alt="player-icon"
+            class="winner-icon"
+            src="./assets/icon-x.svg"
+          />
+          <h1 class="heading-l">takes the round</h2>
+        </div>
+        <div class="lost-btns">
+          <button type="submit" class="heading-xs restart-button quit">quit</button>
+          <button type="submit" class="heading-xs sec-button-1">
+            Next Round
+          </button>
+        </div>
+      </section>
+    </article>
+    
+    <article class="o-announcer cpu-x-won">
+      <section class="announcer">
+        <p class="heading-xs player-state">OH NO, YOU LOST…</p>
+        <div class="winner">
+          <img
+            alt="player-icon"
+            class="winner-icon"
+            src="./assets/icon-x.svg"
+          />
+          <h2 class="heading-l">takes the round</h2>
+        </div>
+        <div class="lost-btns">
+          <button type="submit" class="heading-xs restart-button quit">
+            quit
+          </button>
+          <button type="submit" class="heading-xs sec-button-1">
+            Next Round
+          </button>
+        </div>
+      </section>
+    </article>
+
+    <article class="x-announcer player-x-won">
       <section class="announcer">
         <p class="heading-xs player-state">YOU WON!</p>
         <div class="winner">
@@ -101,8 +143,8 @@
       <section class="announcer tie-announce">
         <h2 class="heading-l tied">round tied</h2>
         <div class="lost-btns">
-          <button type="submit" class="heading-xs restart-button">quit</button>
-          <button type="submit" class="heading-xs sec-button-1">
+          <button type="submit" class="heading-xs restart-button quit">quit</button>
+          <button type="submit" class="heading-xs sec-button-1 next-round">
             Next Round
           </button>
         </div>

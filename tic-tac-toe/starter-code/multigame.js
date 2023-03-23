@@ -1,17 +1,30 @@
 const xPlayer = '<img src="../starter-code/assets/icon-x.svg">';
 const oPlayer = '<img src="../starter-code/assets/icon-o.svg">';
 
+let currentPlayer = "";
+
 const board = document.querySelector(".board");
 const playersTurn = document.querySelector(".players-turn");
 playersTurn.innerHTML = xPlayer;
 const xClass = "xMark";
 const oClass = "oMark";
+
 const player1Mark = sessionStorage.getItem("selectedMark");
 const player2Mark = player1Mark === "x" ? "o" : "x";
+const getPlayer2Mark = document.querySelector(".player2-mark");
+getPlayer2Mark.innerHTML = player2Mark;
+const getPlayer1Mark = document.querySelector(".player1-mark");
+getPlayer1Mark.innerHTML = player1Mark;
+
+//getting the score divs
+const player2Scores = document.querySelector(".player-2-scores");
+const player1Scores = document.querySelector(".player-1-scores");
+const tieScores = document.querySelector(".tie-score");
+
 const boxes = document.querySelectorAll("[data-cell]");
-const modals = document.getElementsByTagName("article");
 const main = document.querySelector("main");
 const body = document.querySelector(".body");
+
 //winning modals
 const player1OModal = document.querySelector(".p1-o-announcer");
 const player1XModal = document.querySelector(".p1-x-announcer");
@@ -26,11 +39,12 @@ const restartBtn = document.querySelector(".restart-button");
 const cancelRestart = document.querySelector(".cancel-restart");
 const restart = document.querySelector(".confirm-restart");
 
+const quitBtn = document.querySelectorAll(".quit");
+
 const winningCombos = [
   [0, 1, 2],
   [0, 3, 6],
   [0, 4, 8],
-  [0, 4, 7],
   [1, 4, 7],
   [2, 5, 8],
   [2, 4, 6],
@@ -38,14 +52,54 @@ const winningCombos = [
   [6, 7, 8],
 ];
 
+let tieValue = 0;
+tieScores.innerText = 0;
+const getScoresForTie = () => {
+  tieValue += 1;
+  tieScores.innerText = tieValue;
+};
+
+let p1Scores = 0;
+player1Scores.innerText = 0;
+const getScoresForPlayer1 = () => {
+  p1Scores += 1;
+  player1Scores.innerText = p1Scores;
+};
+
+let p2Scores = 0;
+player2Scores.innerText = 0;
+const getScoresForPlayer2 = () => {
+  p2Scores += 1;
+  player2Scores.innerText = p2Scores;
+};
+
 const endGame = (draw) => {
   if (draw) {
+    getScoresForTie();
     main.classList.add("modal-background");
     tieModal.classList.add("show-tie");
+  } else if (checkWin(currentPlayer) === "xMark") {
+    if (player1Mark === "x") {
+      getScoresForPlayer1();
+      main.classList.add("modal-background");
+      player1XModal.classList.add("show-p1-xmodal");
+    } else {
+      getScoresForPlayer2();
+      main.classList.add("modal-background");
+      player2XModal.classList.add("show-p2-xmodal");
+    }
+  } else if (checkWin(currentPlayer) === "oMark") {
+    if (player1Mark === "o") {
+      getScoresForPlayer1();
+      main.classList.add("modal-background");
+      player1OModal.classList.add("show-p1-omodal");
+    } else {
+      getScoresForPlayer2();
+      main.classList.add("modal-background");
+      player2OModal.classList.add("show-p2-omodal");
+    }
   }
-  //fix the logic here
-  main.classList.add("modal-background");
-  player1XModal.classList.add("show-p1-xmodal");
+  console.log(checkWin(currentPlayer));
 };
 
 const isDraw = () => {
@@ -56,7 +110,7 @@ const isDraw = () => {
 
 const handleClick = (e) => {
   const box = e.target;
-  const currentPlayer = playersTurn.innerHTML === xPlayer ? xClass : oClass;
+  currentPlayer = playersTurn.innerHTML === xPlayer ? xClass : oClass;
   placeMark(box, currentPlayer);
   if (checkWin(currentPlayer)) {
     endGame(false);
@@ -86,9 +140,11 @@ const restartGame = () => {
     restartModal.classList.remove("show-restart-modal");
   });
   restart.addEventListener("click", startGame);
+  main.classList.remove("modal-background");
 };
 
 const startGame = () => {
+  playersTurn.innerHTML = xPlayer;
   boxes.forEach((box) => {
     box.classList.remove(xClass);
     box.classList.remove(oClass);
@@ -109,9 +165,43 @@ const switchPlayers = () => {
 };
 
 const checkWin = (currentPlayer) => {
-  return winningCombos.some((combination) => {
-    return combination.every((id) => {
+  let wincombo;
+  const won = winningCombos.some((combination) => {
+    const winCombo = combination.every((id) => {
       return boxes[id].classList.contains(currentPlayer);
     });
+    if (winCombo) {
+      wincombo = combination
+    }
+    return winCombo
   });
+  if (won) {
+    if (currentPlayer === 'xMark') {
+      wincombo.forEach(id => {
+        boxes[id].classList.add('xWon')
+      })
+    }
+    return currentPlayer;
+  }
 };
+
+//quit button functionality
+quitBtn.forEach((element) => {
+  element.addEventListener("click", () => {
+    window.location.href = "./index.html";
+  });
+});
+
+//next round button functionality
+const nextRoundBtn = document.querySelectorAll(".next-round");
+nextRoundBtn.forEach((element) => {
+  element.addEventListener("click", () => {
+    startGame();
+    main.classList.remove("modal-background");
+    tieModal.classList.remove("show-tie");
+    player1XModal.classList.remove("show-p1-xmodal");
+    player2XModal.classList.remove("show-p2-xmodal");
+    player1OModal.classList.remove("show-p1-omodal");
+    player2OModal.classList.remove("show-p2-omodal");
+  });
+});

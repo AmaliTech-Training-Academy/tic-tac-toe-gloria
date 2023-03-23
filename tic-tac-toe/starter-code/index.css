@@ -254,7 +254,6 @@ article {
   right: 0;
   bottom: 0;
   /* background-color: #000000; */
-  background: #000000;
   /* mix-blend-mode: normal;
   opacity: 0.7; */
   justify-content: center;
@@ -367,39 +366,29 @@ article {
 .box.oMark {
   cursor: not-allowed;
 }
-.restart-modale {
+.restart-modale,
+.p1-o-announcer,
+.p1-x-announcer,
+.x-announcer,
+.p2-o-announcer,
+.tie-announcer,
+.p2-x-announcer,
+.o-announcer {
   display: none;
 }
-.p1-o-announcer {
-  display: none;
-}
-.p1-x-announcer {
-  display: none;
-}
-.p2-x-announcer {
-  display: none;
-}
-.p2-o-announcer {
-  display: none;
-}
-.tie-announcer {
-  display: none;
-}
-.restart-modale.show {
-  display: block !important;
-}
-.tie-announcer.show-tie {
-  display: block;
-}
-.p1-x-announcer.show-p1-xmodal {
-  display: block;
-}
+
+.tie-announcer.show-tie,
+.p1-x-announcer.show-p1-xmodal,
+.restart-modale.show,
+.show-p2-xmodal,
+.show-p2-omodal,
+.show-p1-omodal,
 .restart-modale.show-restart-modal {
   display: block;
 }
 .main.modal-background {
   position: fixed;
-  top: 70px;
+  top: 5%;
   left: 0;
   right: 0;
   bottom: 0;
@@ -485,4 +474,8 @@ article {
     width: 6rem;
     margin: auto;
   }
+}
+
+.xWon {
+  background: #118c87;
 }
