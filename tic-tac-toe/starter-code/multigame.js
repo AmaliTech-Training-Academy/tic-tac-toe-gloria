@@ -41,6 +41,17 @@ const restart = document.querySelector(".confirm-restart");
 
 const quitBtn = document.querySelectorAll(".quit");
 
+//change score background
+const playerBackground = document.querySelector(".you");
+const cpuBackground = document.querySelector(".cpu");
+if (player1Mark === "x") {
+  playerBackground.classList.add("oMarkBackground");
+  cpuBackground.classList.add("xMarkBackground");
+} else {
+  playerBackground.classList.add("xMarkBackground");
+  cpuBackground.classList.add("oMarkBackground");
+}
+
 const winningCombos = [
   [0, 1, 2],
   [0, 3, 6],
@@ -171,16 +182,18 @@ const checkWin = (currentPlayer) => {
       return boxes[id].classList.contains(currentPlayer);
     });
     if (winCombo) {
-      wincombo = combination
+      wincombo = combination;
     }
-    return winCombo
+    return winCombo;
   });
   if (won) {
-    if (currentPlayer === 'xMark') {
-      wincombo.forEach(id => {
-        boxes[id].classList.add('xWon')
-      })
-    }
+    // if (currentPlayer === "xMark") {
+    //   wincombo.forEach((id) => {
+    //     boxes.forEach((box) => {
+    //       box.style.backgroundImage = "./assets/icon-x-outline.svg";
+    //     });
+    //   });
+    // }
     return currentPlayer;
   }
 };
@@ -191,6 +204,7 @@ quitBtn.forEach((element) => {
     window.location.href = "./index.html";
   });
 });
+
 
 //next round button functionality
 const nextRoundBtn = document.querySelectorAll(".next-round");

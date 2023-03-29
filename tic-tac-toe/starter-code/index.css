@@ -3,6 +3,7 @@
   padding: 0;
   margin: 0;
   text-transform: uppercase;
+  font-family: Outfit;
 }
 body {
   font-size: 14px;
@@ -147,7 +148,6 @@ svg path {
   background: none;
   border-radius: 10px;
   width: 198px;
-  /* height: 54px; */
   cursor: pointer;
 }
 .player-outline:hover {
@@ -230,13 +230,13 @@ svg path {
   border-radius: 15px;
   height: 72px;
 }
-.you {
+.xMarkBackground {
   background: #31c3bd;
 }
 .ties {
   background: #a8bfc9;
 }
-.cpu {
+.oMarkBackground {
   background: #f2b137;
 }
 .score {
@@ -253,9 +253,6 @@ article {
   left: 0;
   right: 0;
   bottom: 0;
-  /* background-color: #000000; */
-  /* mix-blend-mode: normal;
-  opacity: 0.7; */
   justify-content: center;
   align-items: center;
 }
@@ -372,8 +369,11 @@ article {
 .x-announcer,
 .p2-o-announcer,
 .tie-announcer,
-.p2-x-announcer,
-.o-announcer {
+.o-announcer,
+.cpu-x-won,
+.cpu-o-won,
+.player-x-won,
+.player-o-won {
   display: none;
 }
 
@@ -383,6 +383,10 @@ article {
 .show-p2-xmodal,
 .show-p2-omodal,
 .show-p1-omodal,
+.player-x-show,
+.cpu-o-show,
+.player-o-show,
+.cpu-x-show,
 .restart-modale.show-restart-modal {
   display: block;
 }
@@ -396,7 +400,10 @@ article {
   align-items: center;
 }
 
-/* .box:hover{} */
+.x-outline img {
+  width: 36px;
+  height: 36px;
+}
 
 @media (max-width: 560px) {
   .winner h2 {
@@ -428,9 +435,9 @@ article {
   main {
     width: 85%;
   }
-  .player-outline {
-    width: 160px;
-    margin: auto;
+  .board div {
+    width: 100%;
+    height: 110px;
   }
 }
 @media (max-width: 450px) {
@@ -446,6 +453,9 @@ article {
   }
 }
 @media (max-width: 420px) {
+  main {
+    width: 90%;
+  }
   .player-outline {
     width: 143px;
     margin: auto;
@@ -464,18 +474,83 @@ article {
   }
 }
 @media (max-width: 370px) {
+  .heading-s {
+    font-size: 16px;
+  }
   .player-outline {
     width: 7rem;
     margin: auto;
   }
 }
 @media (max-width: 330px) {
+  body {
+    margin-top: 39px;
+  }
+  .logo {
+    height: 32px;
+    width: 72px;
+  }
   .player-outline {
     width: 6rem;
     margin: auto;
   }
+  .board div {
+    width: 105%;
+    height: 96px;
+  }
+  .turn {
+    width: 77px;
+  }
+  .turn .body-text {
+    margin-left: 7px;
+    font-size: 12px;
+  }
+  .board img {
+    width: 60%;
+    height: 50%;
+  }
+  .board button {
+    height: 64px;
+  }
+  .box.xMark {
+    background-size: auto 50%;
+  }
+  .box.oMark {
+    background-size: auto 50%;
+  }
+}
+
+@media (max-width: 280px) {
+  body {
+    font-size: 12px;
+  }
+  .heading-xs {
+    font-size: 14px;
+  }
+  .select-player {
+    padding-top: 9px;
+    padding-bottom: 9px;
+    padding-left: 5px;
+    width: 100%;
+  }
+  .board div {
+    height: 83px;
+    width: 110%;
+  }
+  .board button {
+    height: 65px;
+    margin: -3px;
+  }
 }
 
 .xWon {
-  background: #118c87;
+  background-image: url("./assets/icon-x-outline.svg");
+}
+.player-o-won h1,
+.cpu-o-won h2 {
+  color: #f2b137;
+}
+.player-x-won h1,
+.cpu-x-won h2 {
+  color: #31c3bd;
 }

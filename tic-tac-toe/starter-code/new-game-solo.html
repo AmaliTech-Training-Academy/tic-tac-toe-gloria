@@ -15,7 +15,7 @@
     <title>Frontend Mentor | Tic Tac Toe</title>
   </head>
   <body>
-    <main class="main">
+    <main class="main game">
       <section class="solo-header">
         <img src="../starter-code/assets/logo.svg" alt="logo-xo" class="logo" />
         <button type="submit" class="turn">
@@ -31,27 +31,27 @@
         </button>
       </section>
       <section class="board">
-        <div class="box" id="0" onclick='handleClick(0)'></div>
-        <div class="box" id="1" onclick='handleClick(1)'></div>
-        <div class="box" id="2" onclick='handleClick(2)'></div>
-        <div class="box" id="3" onclick='handleClick(3)'></div>
-        <div class="box" id="4" onclick='handleClick(4)'></div>
-        <div class="box" id="5" onclick='handleClick(5)'></div>
-        <div class="box" id="6" onclick='handleClick(6)'></div>
-        <div class="box" id="7" onclick='handleClick(7)'></div>
-        <div class="box" id="8" onclick='handleClick(8)'></div>
+        <div class="box box1" id="0"></div>
+        <div class="box box2" id="1"></div>
+        <div class="box box3" id="2"></div>
+        <div class="box box4" id="3"></div>
+        <div class="box box5" id="4"></div>
+        <div class="box box6" id="5"></div>
+        <div class="box box7" id="6"></div>
+        <div class="box box8" id="7"></div>
+        <div class="box box9" id="8"></div>
 
         <button class="you score" type="button">
           <span class="span players-type"></span><span> (you)</span>
-          <p class="heading-m player-score">0</p>
+          <p class="heading-m player-score"></p>
         </button>
         <button class="ties score" type="button">
           Ties
-          <p class="heading-m tie-score">0</p>
+          <p class="heading-m tie-score"></p>
         </button>
         <button class="cpu score" type="button">
           <span class="span cpu-type"> </span><span> (cpu)</span>
-          <p class="heading-m cpu-score">0</p>
+          <p class="heading-m cpu-score"></p>
         </button>
       </section>
     </main>
@@ -70,27 +70,27 @@
           <button type="submit" class="heading-xs restart-button quit">
             quit
           </button>
-          <button type="submit" class="heading-xs sec-button-1">
+          <button type="submit" class="heading-xs sec-button-1 next-round">
             Next Round
           </button>
         </div>
       </section>
     </article>
 
-    <article class="x-announcer player-o-won">
+    <article class="o-announcer player-o-won">
       <section class="announcer">
         <p class="heading-xs player-state">YOU WON!</p>
         <div class="winner">
           <img
             alt="player-icon"
             class="winner-icon"
-            src="./assets/icon-x.svg"
+            src="./assets/icon-o.svg"
           />
           <h1 class="heading-l">takes the round</h2>
         </div>
         <div class="lost-btns">
           <button type="submit" class="heading-xs restart-button quit">quit</button>
-          <button type="submit" class="heading-xs sec-button-1">
+          <button type="submit" class="heading-xs sec-button-1 next-round">
             Next Round
           </button>
         </div>
@@ -112,7 +112,7 @@
           <button type="submit" class="heading-xs restart-button quit">
             quit
           </button>
-          <button type="submit" class="heading-xs sec-button-1">
+          <button type="submit" class="heading-xs sec-button-1 next-round">
             Next Round
           </button>
         </div>
@@ -132,7 +132,7 @@
         </div>
         <div class="lost-btns">
           <button type="submit" class="heading-xs restart-button quit">quit</button>
-          <button type="submit" class="heading-xs sec-button-1">
+          <button type="submit" class="heading-xs sec-button-1 next-round">
             Next Round
           </button>
         </div>

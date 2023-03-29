@@ -1,16 +1,11 @@
 const xPlayer = '<img src="../starter-code/assets/icon-x.svg">';
 const oPlayer = '<img src="../starter-code/assets/icon-o.svg">';
 
-// let mark = "";
-
 const board = document.querySelector(".board");
-const whoseTurn = document.querySelector(".players-turn");
-whoseTurn.innerHTML = xPlayer;
+let whoseTurn = document.querySelector(".players-turn");
 
-const boxes = Array.from(document.querySelectorAll(".box"));
-
-let nextPlayer = "",
-  firstPlayer = "";
+const boxes = Array.from(document.querySelectorAll(".box")),
+  allBox = document.querySelectorAll(".box");
 
 const playerMark = sessionStorage.getItem("selectedMark"),
   getPlayerMark = document.querySelector(".players-type");
@@ -22,94 +17,32 @@ getcpuMark.innerHTML = cpuMark;
 
 const tieModal = document.querySelector(".tie-announcer");
 
-const winningCombos = [
-  [0, 1, 2],
-  [0, 3, 6],
-  [0, 4, 8],
-  [1, 4, 7],
-  [2, 5, 8],
-  [2, 4, 6],
-  [3, 4, 5],
-  [6, 7, 8],
-];
+const cpuWonWithOMark = document.querySelector(".cpu-o-won"),
+  playerWonWithOMark = document.querySelector(".player-o-won"),
+  cpuWonWithXMark = document.querySelector(".cpu-x-won"),
+  playerWonWithXMark = document.querySelector(".player-x-won");
 
+//change score background
+const playerBackground = document.querySelector(".you");
+const cpuBackground = document.querySelector(".cpu");
+if (playerMark === "x") {
+  playerBackground.classList.add("xMarkBackground");
+  cpuBackground.classList.add("oMarkBackground");
+} else {
+  playerBackground.classList.add("oMarkBackground");
+  cpuBackground.classList.add("xMarkBackground");
+}
+//get the score div tags
+const playerScores = document.querySelector(".player-score");
+const cpuScores = document.querySelector(".cpu-score");
+const tieScores = document.querySelector(".tie-score");
 
-const handleClick = (id) => {
-  if (boxes[id].innerHTML === "") {
-    if (firstPlayer === "player") {
-      placeMark(id, xPlayer);
-      // if(checkWin(xPlayer)) {
-      // }
-    } else {
-      placeMark(id, oPlayer);
-      console.log(oPlayer);
-    }
-  }
-  setTimeout(() => {
-    cpuPlay();
-  }, 1000);
-  checkForWin();
-};
-
-const whoWins = () => {};
-
-const startGame = () => {
-  if (sessionStorage.getItem("selectedMark") === "x") {
-    firstPlayer = "player";
-  } else {
-    firstPlayer = "cpu";
-  }
-  nextPlayer = firstPlayer;
-  if (firstPlayer === "cpu") {
-    setTimeout(() => {
-      cpuPlay();
-    }, 1000);
-  }
-};
-
-window.onload = () => {
-  startGame();
-};
-
-const placeMark = (id, mark) => {
-  boxes[id].innerHTML = mark;
-  switchTurns(id);
-};
-
-const switchTurns = (id) => {
-  whoseTurn.innerHTML = boxes[id].innerHTML === xPlayer ? oPlayer : xPlayer;
-};
-
-const cpuPlay = () => {
-  const boxarr = boxes.map((ele) => ele.id);
-  let emptyBoxes = [];
-  const boxesId = boxes.map((ele) => ele.id);
-  boxesId.map((id) => {
-    if (boxes[id].innerHTML === "") {
-      emptyBoxes.push(id);
-    }
-  });
-  const cpuId = Math.floor(Math.random() * emptyBoxes.length);
-  const randomNum = emptyBoxes[cpuId];
-  const index = boxarr.indexOf(randomNum);
-  const mark = sessionStorage.getItem("cpuMark") === "x" ? xPlayer : oPlayer;
-  placeMark(index, mark);
-};
-
+//restart game
 const restartBtn = document.querySelector(".restart-button"),
   restartModal = document.querySelector(".restart-modale"),
   cancelRestart = document.querySelector(".cancel-restart"),
   restart = document.querySelector(".confirm-restart");
 const main = document.querySelector("main");
-
-const restartNewGame = () => {
-  whoseTurn.innerHTML = xPlayer;
-  restartModal.classList.remove("show-restart-modal");
-  const boxesId = boxes.map((ele) => ele.id);
-  boxesId.map((id) => {
-    boxes[id].innerHTML = "";
-  });
-};
 
 const restartGame = () => {
   main.classList.add("modal-background");
@@ -117,27 +50,217 @@ const restartGame = () => {
   cancelRestart.addEventListener("click", () => {
     restartModal.classList.remove("show-restart-modal");
   });
-  restart.addEventListener("click", restartNewGame);
+  restart.addEventListener("click", () => {
+    window.location.reload();
+  });
 };
 
 restartBtn.addEventListener("click", restartGame);
 
-const check_win = (mark) => {
-  let wincombination = [];
-  return winningCombos.some((combination) => {
-    const winCombo = combination.every((id) => {
-      boxes[id].innerHTML === mark;
-      // console.log(boxes[id].innerHTML);
-    });
-    if (winCombo) {
-      wincombination = [...combination];
-    }
-    return winCombo;
-  });
-  // if (mark === xPlayer) {
-  //   winCombo.forEach(id => {
-  //     boxes[id]
-  //   });
-  // }
-  // return mark;
+//increment score
+let tieValue = 0;
+tieScores.innerText = 0;
+const getScoresForTie = () => {
+  tieValue += 1;
+  tieScores.innerText = tieValue;
 };
+
+let userScores = 0;
+playerScores.innerText = 0;
+const getScoresForPlayer = () => {
+  userScores += 1;
+  playerScores.innerText = userScores;
+};
+
+let botScores = 0;
+cpuScores.innerText = 0;
+const getScoresForCpu = () => {
+  botScores += 1;
+  cpuScores.innerText = botScores;
+};
+
+// main game
+window.onload = () => {
+  whoseTurn.innerHTML = xPlayer;
+  for (let i = 0; i < allBox.length; i++) {
+    allBox[i].setAttribute("onclick", "clickedBox(this)");
+  }
+
+  if (cpuMark === "x") {
+    setTimeout(() => {
+      getcpuPlay();
+    }, 1000);
+  }
+};
+
+let cpuPlay = true,
+  userMark = "x";
+
+const switchTurn = (element) => {
+  whoseTurn.innerHTML = element.innerHTML === xPlayer ? oPlayer : xPlayer;
+};
+
+const clickedBox = (element) => {
+  if (playerMark === "o") {
+    userMark = "o";
+    element.innerHTML = oPlayer;
+    element.setAttribute("id", userMark);
+  } else {
+    userMark = "x";
+    element.innerHTML = xPlayer;
+    element.setAttribute("id", userMark);
+  }
+  switchTurn(element);
+  selectWinner();
+  element.style.pointerEvents = "none";
+  setTimeout(() => {
+    getcpuPlay(cpuPlay);
+  }, 1500);
+  console.log(userMark);
+};
+
+const getcpuPlay = () => {
+  let emptyBoxes = [];
+  if (cpuPlay) {
+    userMark = "O";
+    //generate random id
+    for (let i = 0; i < allBox.length; i++) {
+      if (allBox[i].childElementCount == 0) {
+        emptyBoxes.push(i);
+      }
+    }
+    let randomBox = emptyBoxes[Math.floor(Math.random() * emptyBoxes.length)];
+    //check if id is more than 1
+    if (emptyBoxes.length > 0) {
+      if (cpuMark === "x") {
+        userMark = "x";
+        allBox[randomBox].innerHTML = xPlayer;
+        whoseTurn.innerHTML =
+          allBox[randomBox].innerHTML === xPlayer ? oPlayer : xPlayer;
+        allBox[randomBox].style.pointerEvents = "none";
+        allBox[randomBox].setAttribute("id", userMark);
+      } else {
+        allBox[randomBox].innerHTML = oPlayer;
+        switchTurn(allBox[randomBox]);
+        allBox[randomBox].style.pointerEvents = "none";
+        allBox[randomBox].setAttribute("id", userMark);
+      }
+    }
+    selectWinner();
+    console.log(userMark);
+  }
+};
+
+const getIdVal = (className) => {
+  return document.querySelector(".box" + className).id; //return id value
+};
+const checkIdSign = (val1, val2, val3, sign) => {
+  //checking all id value is equal to sign (X or O) or not if yes then return true
+  if (
+    getIdVal(val1) === sign &&
+    getIdVal(val2) === sign &&
+    getIdVal(val3) === sign
+  ) {
+    return true;
+  }
+};
+
+const selectWinner = () => {
+  if (
+    checkIdSign(1, 2, 3, userMark) ||
+    checkIdSign(4, 5, 6, userMark) ||
+    checkIdSign(7, 8, 9, userMark) ||
+    checkIdSign(1, 4, 7, userMark) ||
+    checkIdSign(2, 5, 8, userMark) ||
+    checkIdSign(3, 6, 9, userMark) ||
+    checkIdSign(1, 5, 9, userMark) ||
+    checkIdSign(3, 5, 7, userMark)
+  ) {
+    cpuPlay = false;
+    getcpuPlay(cpuPlay);
+
+    //player modal
+    if (playerMark === "x" && userMark === "x") {
+      console.log("you x won");
+      playerWonWithXMark.classList.add("player-x-show");
+      getScoresForPlayer();
+    } else if (playerMark === "o" && userMark === "o") {
+      console.log(" you o won");
+      playerWonWithOMark.classList.add("player-o-show");
+      getScoresForPlayer();
+    }
+
+    //cpu modal
+    else if (userMark === "x" && playerMark === "o") {
+      console.log("cpu x won");
+      cpuWonWithXMark.classList.add("cpu-x-show");
+      getScoresForCpu();
+    } else {
+      console.log("cpu o won");
+      cpuWonWithOMark.classList.add("cpu-x-show");
+      getScoresForCpu();
+    }
+  }
+  // else {
+  //   if (
+  //     getIdVal(1) != "" &&
+  //     getIdVal(2) != "" &&
+  //     getIdVal(3) != "" &&
+  //     getIdVal(4) != "" &&
+  //     getIdVal(5) != "" &&
+  //     getIdVal(6) != "" &&
+  //     getIdVal(7) != "" &&
+  //     getIdVal(8) != "" &&
+  //     getIdVal(9) != ""
+  //   ) {
+  //     runBot = false; //passing the false boolen value to runBot so bot won't run again
+  //     getcpuPlay(runBot); //calling bot function
+  //     console.log("tie");
+  //     // tieModal.classList.add("show-tie");
+  //   }
+  // }
+};
+
+//quit button
+const quitBtn = document.querySelectorAll(".quit");
+quitBtn.forEach((element) => {
+  element.addEventListener("click", () => {
+    window.location.href = "./index.html";
+  });
+});
+
+const startGame = () => {
+  boxes.forEach((box) => {
+    box.innerHTML = "";
+  });
+  // I have to look at this;
+
+  // whoseTurn.innerHTML = xPlayer;
+  // for (let i = 0; i < allBox.length; i++) {
+  //   allBox[i].setAttribute("onclick", "clickedBox(this)");
+  // }
+
+  // if (cpuMark === "x") {
+  //   setTimeout(() => {
+  //     getcpuPlay();
+  //   }, 1000);
+  // }
+};
+
+//next round button functionality
+const nextRoundBtn = document.querySelectorAll(".next-round");
+nextRoundBtn.forEach((element) => {
+  element.addEventListener("click", () => {
+    startGame();
+    whoseTurn.innerHTML = xPlayer;
+    if (cpuMark === "x") {
+      getcpuPlay;
+    }
+    // main.classList.remove("modal-background");
+    tieModal.classList.remove("show-tie");
+    cpuWonWithXMark.classList.remove("cpu-x-show");
+    cpuWonWithOMark.classList.remove("cpu-x-show");
+    playerWonWithOMark.classList.remove("player-o-show");
+    playerWonWithXMark.classList.remove("player-x-show");
+  });
+});

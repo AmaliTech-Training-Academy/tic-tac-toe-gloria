@@ -18,8 +18,6 @@ playerO.addEventListener("click", () => {
   sessionStorage.setItem("cpuMark", "x");
 });
 
-
-
 newSoloGame.addEventListener("click", () => {
   const selectedMark = sessionStorage.getItem("selectedMark");
 
@@ -40,9 +38,4 @@ newMultiGame.addEventListener("click", () => {
   } else {
     alert("select a mark");
   }
-});
-
-const logo = document.querySelector(".logo");
-logo.addEventListener("click", () => {
-  window.location.href = "./new-game-multiplayer.html";
 });
