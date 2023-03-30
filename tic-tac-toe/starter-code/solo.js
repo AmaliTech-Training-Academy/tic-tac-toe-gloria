@@ -112,6 +112,7 @@ const clickedBox = (element) => {
   }
   switchTurn(element);
   selectWinner();
+  checkDraw();
   element.style.pointerEvents = "none";
   setTimeout(() => {
     getcpuPlay(cpuPlay);
@@ -184,10 +185,12 @@ const selectWinner = () => {
       console.log("you x won");
       playerWonWithXMark.classList.add("player-x-show");
       getScoresForPlayer();
+      localStorage.setItem("player", getScoresForPlayer);
     } else if (playerMark === "o" && userMark === "o") {
       console.log(" you o won");
       playerWonWithOMark.classList.add("player-o-show");
       getScoresForPlayer();
+      localStorage.setItem("player-scores", getScoresForPlayer);
     }
 
     //cpu modal
@@ -195,29 +198,25 @@ const selectWinner = () => {
       console.log("cpu x won");
       cpuWonWithXMark.classList.add("cpu-x-show");
       getScoresForCpu();
+      localStorage.setItem("cpu-scores", getScoresForCpu);
     } else {
       console.log("cpu o won");
       cpuWonWithOMark.classList.add("cpu-x-show");
       getScoresForCpu();
+      localStorage.setItem("cpu-scores", getScoresForCpu);
     }
   }
-  // else {
-  //   if (
-  //     getIdVal(1) != "" &&
-  //     getIdVal(2) != "" &&
-  //     getIdVal(3) != "" &&
-  //     getIdVal(4) != "" &&
-  //     getIdVal(5) != "" &&
-  //     getIdVal(6) != "" &&
-  //     getIdVal(7) != "" &&
-  //     getIdVal(8) != "" &&
-  //     getIdVal(9) != ""
-  //   ) {
-  //     runBot = false; //passing the false boolen value to runBot so bot won't run again
-  //     getcpuPlay(runBot); //calling bot function
-  //     console.log("tie");
-  //     // tieModal.classList.add("show-tie");
-  //   }
+};
+const checkDraw = (id) => {
+  // if (
+  //   allBox[id].every((box) => {
+  //     box.innerHTML !== "";
+  //   })
+  // ) {
+  //   cpuPlay = false;
+  //   getcpuPlay(cpuPlay);
+  //   console.log("tie");
+  //   tieModal.classList.add("show-tie");
   // }
 };
 
@@ -230,32 +229,24 @@ quitBtn.forEach((element) => {
 });
 
 const startGame = () => {
-  boxes.forEach((box) => {
+  whoseTurn.innerHTML = xPlayer;
+  allBox.forEach((box) => {
     box.innerHTML = "";
+    box.removeAttribute("onclick", "clickedBox(this)");
+    box.setAttribute("onclick", "clickedBox(this)");
+    if (cpuMark === "x") {
+      setTimeout(() => {
+        getcpuPlay();
+      }, 1000);
+    }
   });
-  // I have to look at this;
-
-  // whoseTurn.innerHTML = xPlayer;
-  // for (let i = 0; i < allBox.length; i++) {
-  //   allBox[i].setAttribute("onclick", "clickedBox(this)");
-  // }
-
-  // if (cpuMark === "x") {
-  //   setTimeout(() => {
-  //     getcpuPlay();
-  //   }, 1000);
-  // }
 };
 
 //next round button functionality
 const nextRoundBtn = document.querySelectorAll(".next-round");
 nextRoundBtn.forEach((element) => {
   element.addEventListener("click", () => {
-    startGame();
-    whoseTurn.innerHTML = xPlayer;
-    if (cpuMark === "x") {
-      getcpuPlay;
-    }
+    startGame;
     // main.classList.remove("modal-background");
     tieModal.classList.remove("show-tie");
     cpuWonWithXMark.classList.remove("cpu-x-show");
