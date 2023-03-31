@@ -148,11 +148,16 @@ svg path {
   background: none;
   border-radius: 10px;
   width: 198px;
+  height: 54px;
   cursor: pointer;
 }
 .player-outline:hover {
   background: #a8bfc90d;
   border-radius: 10px;
+}
+.player-outline img {
+  width: 32px;
+  height: 32px;
 }
 
 .btn-click {
@@ -162,8 +167,11 @@ svg path {
 .btn-click:hover {
   background-color: #a8bfc9;
 }
-.btn-click path {
-  fill: #1a2a33;
+.btn-click .o-container {
+  content: url(./assets/icon-o-dark.svg);
+}
+.btn-click .x-container {
+  content: url(./assets/icon-x-dark.svg);
 }
 .icon {
   height: 20px;

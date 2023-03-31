@@ -1,5 +1,8 @@
-const xPlayer = '<img src="../starter-code/assets/icon-x.svg">';
+const xPlayer =
+  '<div class="player-icon"><img src="../starter-code/assets/icon-x.svg"></div';
 const oPlayer = '<img src="../starter-code/assets/icon-o.svg">';
+const xHover = '<img src="../starter-code/assets/icon-x-outline.svg">';
+const oHover = '<img src="../starter-code/assets/icon-o-outline.svg">';
 
 const board = document.querySelector(".board");
 let whoseTurn = document.querySelector(".players-turn");
@@ -83,6 +86,7 @@ const getScoresForCpu = () => {
 window.onload = () => {
   whoseTurn.innerHTML = xPlayer;
   for (let i = 0; i < allBox.length; i++) {
+    allBox[i].setAttribute("onmouseon", "setBoxHover(this)");
     allBox[i].setAttribute("onclick", "clickedBox(this)");
   }
 
@@ -100,13 +104,28 @@ const switchTurn = (element) => {
   whoseTurn.innerHTML = element.innerHTML === xPlayer ? oPlayer : xPlayer;
 };
 
+const setBoxesHover = (element) => {
+  if (playerMark === "o") {
+    userMark = "o";
+    element.innerHTML = oHover;
+    element.setAttribute("id", userMark);
+  } else {
+    userMark = "x";
+    element.innerHTML = xHover;
+    element.setAttribute("id", userMark);
+  }
+};
+
 const clickedBox = (element) => {
   if (playerMark === "o") {
     userMark = "o";
+    setBoxesHover(element);
+    // element.innerHTML = oHover;
     element.innerHTML = oPlayer;
     element.setAttribute("id", userMark);
   } else {
     userMark = "x";
+    // element.innerHTML = xHover;
     element.innerHTML = xPlayer;
     element.setAttribute("id", userMark);
   }
