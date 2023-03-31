@@ -4,7 +4,7 @@ const oPlayer = '<img src="../starter-code/assets/icon-o.svg">';
 const board = document.querySelector(".board");
 let whoseTurn = document.querySelector(".players-turn");
 
-const boxes = Array.from(document.querySelectorAll(".box")),
+let boxes = Array.from(document.querySelectorAll(".box")),
   allBox = document.querySelectorAll(".box");
 
 const playerMark = sessionStorage.getItem("selectedMark"),
@@ -206,6 +206,18 @@ const selectWinner = () => {
       localStorage.setItem("cpu-scores", getScoresForCpu);
     }
   }
+  // else {
+  //   if (
+  //     boxes.every((box) => {
+  //       box.innerHTML !== "";
+  //     })
+  //   ) {
+  //     cpuPlay = false;
+  //     getcpuPlay(cpuPlay);
+  //     console.log("tie");
+  //     tieModal.classList.add("show-tie");
+  //   }
+  // }
 };
 const checkDraw = (id) => {
   // if (
@@ -232,8 +244,10 @@ const startGame = () => {
   whoseTurn.innerHTML = xPlayer;
   allBox.forEach((box) => {
     box.innerHTML = "";
+    userMark = "x";
     box.removeAttribute("onclick", "clickedBox(this)");
-    box.setAttribute("onclick", "clickedBox(this)");
+    // box.setAttribute("onclick", "clickedBox(this)");
+    box.addEventListener("click", clickedBox);
     if (cpuMark === "x") {
       setTimeout(() => {
         getcpuPlay();
@@ -246,7 +260,7 @@ const startGame = () => {
 const nextRoundBtn = document.querySelectorAll(".next-round");
 nextRoundBtn.forEach((element) => {
   element.addEventListener("click", () => {
-    startGame;
+    startGame();
     // main.classList.remove("modal-background");
     tieModal.classList.remove("show-tie");
     cpuWonWithXMark.classList.remove("cpu-x-show");
